@@ -2593,7 +2593,7 @@ def labelImage(imagePath,texts,fields,pairs,samePairs,horzLinks,groups,transcrip
     #cv2.imshow('labeler',p.displayImage)
 
     #fig,axs = plt.subplots(1,2)
-    fig = plt.figure()
+    fig = plt.figure(facecolor="grey")
     gs = gridspec.GridSpec(1, 2, width_ratios=[8, 1])
     ax_im = plt.subplot(gs[0])
     ax_im.set_axis_off()

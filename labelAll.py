@@ -93,9 +93,9 @@ else:
 if len(sys.argv)>3:
     startHereImage = sys.argv[3]
     if '.' in startHereImage:
-        startHereImage = startHereImage[:startHereImage.rfind('.')]+'.jpg'
+        startHereImage = startHereImage[:startHereImage.rfind('.')]+'.png'
     else:
-        startHereImage +='.jpg'
+        startHereImage +='.png'
     goingImage=False
 else:
     startHereImage=None
@@ -159,7 +159,7 @@ for groupName in sorted(groupNames):
             template = os.path.join(directory,groupName,f)
         elif 'template' in f and f[-8:]=='.json.nf':
             templateNF = os.path.join(directory,groupName,f)
-        elif f[-4:]=='.jpg':
+        elif f[-4:]=='.png':
             if not checking:
                 numImages+=1
         elif f[-5:]=='.json':
@@ -170,15 +170,15 @@ for groupName in sorted(groupNames):
                 prob,reason = checkProblem(os.path.join(directory,groupName,f))
                 if prob:
                     ind = f.find('.')
-                    f = f[:ind]+'.jpg'
+                    f = f[:ind]+'.png'
                     problems.append((f,reason))
         elif f[-8:]=='.json.nf':
             if not autochecking:
-                unfinished.append(f[0:-8]+'.jpg')
+                unfinished.append(f[0:-8]+'.png')
             else:
                 prob, reason = checkProblem(os.path.join(directory,groupName,f))
                 ind = f.find('.')
-                f = f[:ind]+'.jpg'
+                f = f[:ind]+'.png'
                 problems.append((f,reason))
     if not checking:
         numImages = min(numImages,NUM_PER_GROUP)

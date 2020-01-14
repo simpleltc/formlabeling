@@ -7,30 +7,30 @@ import timeit
 import grp
 
 
-iains_groups=[]#'171','172','173','174','182','187','189','193','194','197','199','200','29','30','34','34_1','35','35_1','39','4','42','46','46_1','46_2','5','52','53','53_1','58','58_1','6','60','60_1','60_2','60_3','61','62','62_1','65','68','69','70','71','71_1','72','75_1','78','79','8','81','81_1','86','86_1','88','89','89_1','89_2','93','96','98']
-#groupId = grp.getgrnam("pairing").gr_gid
-if len(sys.argv)<2:
-    print('usage: '+sys.argv[0]+' directory (startingGroup)')
+iains_groups = []  # '171','172','173','174','182','187','189','193','194','197','199','200','29','30','34','34_1','35','35_1','39','4','42','46','46_1','46_2','5','52','53','53_1','58','58_1','6','60','60_1','60_2','60_3','61','62','62_1','65','68','69','70','71','71_1','72','75_1','78','79','8','81','81_1','86','86_1','88','89','89_1','89_2','93','96','98']
+# groupId = grp.getgrnam("pairing").gr_gid
+if len(sys.argv) < 2:
+    print('usage: ' + sys.argv[0] + ' directory (startingGroup)')
     exit()
 
 directory = sys.argv[1]
-if len(sys.argv)>2:
+if len(sys.argv) > 2:
     startHere = sys.argv[2]
-    going=False
+    going = False
 else:
-    startHere=None
-    going=True
+    startHere = None
+    going = True
 
-if directory[-1]!='/':
-    directory=directory+'/'
-rr=directory[directory[:-1].rindex('/')+1:-1]
-imageGroups={}
-groupNames=[]
+if directory[-1] != '/':
+    directory = directory + '/'
+rr = directory[directory[:-1].rindex('/') + 1:-1]
+imageGroups = {}
+groupNames = []
 for root, dirs, files in os.walk(directory):
-    #print 'root: '+root
-    if root[-1]=='/':
-        root=root[:-1]
-    groupName = root[root.rindex('/')+1:]
+    # print 'root: '+root
+    if root[-1] == '/':
+        root = root[:-1]
+    groupName = root[root.rindex('/') + 1:]
     if rr==groupName:
         continue
     imageGroups[groupName]=sorted(files)
@@ -47,7 +47,7 @@ for groupName in sorted(groupNames):
     template = None
     imageTemplate=None
     for f in files:
-        if imageTemplate is None and f[-4:]=='.jpg':
+        if imageTemplate is None and f[-4:]=='.png':
             imageTemplate = files[0]
 
         if 'template' in f and f[-5:]=='.json':
